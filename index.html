@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>[Shashank Panchal] – Full-stack developer (React, Node.js, TypeScript)</title>
+<meta name="description" content="Freelance full-stack developer building web apps with React, TypeScript, Node.js and MongoDB.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Newsreader:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF2F7;--surface:#FFFFFF;--ink:#0F1B2D;--muted:#4B5A73;--line:#CFD8E6;--accent:#2745E0;--accent-ink:#FFFFFF;--ok:#12805C;--chip:#E1E8F5;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1422;--surface:#131F33;--ink:#E8EEF8;--muted:#9AA8C0;--line:#25344E;--accent:#8AA0FF;--accent-ink:#0C1422;--ok:#4FD1A1;--chip:#1B2A44;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0C1422;--surface:#131F33;--ink:#E8EEF8;--muted:#9AA8C0;--line:#25344E;--accent:#8AA0FF;--accent-ink:#0C1422;--ok:#4FD1A1;--chip:#1B2A44;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.65 "Newsreader",Georgia,"Times New Roman",serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+h1,h2,h3,.brand,.btn,nav a,.chip,dt{font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.015em}
+p{margin:0 0 .9em}
+a{color:var(--accent)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:500}
+nav a:hover{color:var(--ink)}
+nav a.btn{color:var(--accent-ink);padding:8px 16px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);font-weight:600;font-size:1rem;text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center;padding:72px 0 56px}
+h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:700}
+.hero p.sub{font-size:1.2rem;color:var(--muted);max-width:52ch;margin:20px 0 28px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.status{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.status .live{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;margin-bottom:14px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
+@media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.2s ease-out infinite}@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}100%{box-shadow:0 0 0 12px transparent}}}
+.status dl{margin:0}
+.status dt{font-size:.9rem;font-weight:600;color:var(--muted)}
+.status dd{margin:0 0 12px}
+section{padding:56px 0}
+h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;margin-bottom:10px}
+.lead{color:var(--muted);max-width:60ch;margin-bottom:28px}
+.row{display:grid;grid-template-columns:1fr 2fr;gap:10px 40px;padding:24px 0;border-top:1px solid var(--line)}
+.row h3{font-size:1.3rem}
+.row p:last-child{margin-bottom:0}
+.meta{color:var(--muted);font-size:.95rem}
+.chips{margin-top:12px}
+.chip{display:inline-block;padding:4px 12px;margin:0 6px 6px 0;border-radius:999px;background:var(--chip);font-size:.88rem;font-weight:500}
+.case strong{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.links{display:flex;gap:18px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;counter-reset:s}
+ol.steps li{counter-increment:s;border-left:3px solid var(--accent);padding-left:16px}
+ol.steps li::before{content:"Step " counter(s);display:block;color:var(--muted);font-size:.9rem;font-family:"Bricolage Grotesque",system-ui,sans-serif}
+ol.steps h3{font-size:1.15rem;margin:2px 0 6px}
+.skills{display:grid;grid-template-columns:1fr 2fr;gap:10px 40px;padding:18px 0;border-top:1px solid var(--line)}
+.skills dt{font-weight:600}
+.skills dd{margin:0}
+.about p{max-width:62ch}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:40px 32px}
+.contact .mail{display:inline-block;font:700 clamp(1.3rem,3.4vw,2rem)/1.2 "Bricolage Grotesque",system-ui,sans-serif;margin:6px 0 18px;overflow-wrap:anywhere}
+footer{padding:28px 0 40px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+@media (max-width:760px){
+.hero{grid-template-columns:1fr;gap:32px;padding-top:44px}
+.row,.skills{grid-template-columns:1fr}
+nav a:not(.btn){display:none}
+.contact{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Shashank Panchal</a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a class="btn" href="#contact">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Web apps for startups and small teams, built from idea to launch.</h1>
+        <p class="sub">I’m Shashank Panchal, a full-stack developer with 7+ years of production experience. I build with React, TypeScript, Node.js and MongoDB.</p>
+        <p class="sub">Senior Full Stack Developer | Remote Developer | Available for Freelance | React.js, TypeScript, Node.js, Express, MongoDB| AI Integration | 7+ Yrs | Solution Provider | I Build Fast, Scalable Web Apps |</p>
+        <div class="actions">
+          <a class="btn" href="mailto:shashankpanchal28@gmail.com?subject=Project%20enquiry">Email me about your project</a>
+          <a class="btn alt" href="#work">See recent work</a>
+        </div>
+      </div>
+      <aside class="status" aria-label="Availability">
+        <div class="live"><span class="dot"></span>Booking new projects</div>
+        <dl>
+          <dt>Reply time</dt><dd>Within 24 hours</dd>
+          <dt>Ways to work together</dt><dd>Fixed-price project, hourly, or monthly retainer</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="services">
+      <h2>What I can build for you</h2>
+      <p class="lead">Three kinds of work I take on, each with a clear deliverable and a fixed timeline.</p>
+      <div class="row">
+        <h3>Full-stack web apps</h3>
+        <div><p>Dashboards, booking tools, internal tools and SaaS MVPs on React, Node.js and MongoDB. You get a deployed app, clean code and a handover guide.</p><p class="meta">Typical timeline: [4–8 weeks]</p></div>
+      </div>
+      <div class="row">
+        <h3>React and TypeScript front ends</h3>
+        <div><p>New interfaces, or rebuilds of ones that are slow or hard to maintain. Responsive, accessible and typed from API to UI.</p><p class="meta">Typical timeline: [2–4 weeks]</p></div>
+      </div>
+      <div class="row">
+        <h3>APIs and backend work</h3>
+        <div><p>REST APIs with Express, MongoDB data models, user login, payments and third-party integrations.</p><p class="meta">Typical timeline: [2–6 weeks]</p></div>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2>How a project works</h2>
+      <p class="lead">Clients should always know what happens next.</p>
+      <ol class="steps">
+        <li><h3>Short call</h3><p>We talk through what you need, who it’s for and what success looks like. Free, 30 minutes.</p></li>
+        <li><h3>Scope and quote</h3><p>You get a written scope, timeline and fixed price within two working days.</p></li>
+        <li><h3>Build with weekly demos</h3><p>You see working software every week and can change direction early.</p></li>
+        <li><h3>Launch and support</h3><p>I deploy it, hand over code and docs, and stay available for [30] days after launch.</p></li>
+      </ol>
+    </section>
+
+    <section id="skills">
+      <h2>Tools I work with</h2>
+      <dl style="margin:24px 0 0">
+        <div class="skills"><dt>Front end</dt><dd><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React.js</span></dd></div>
+        <div class="skills"><dt>Back end</dt><dd><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">REST APIs</span></dd></div>
+        <div class="skills"><dt>Database</dt><dd><span class="chip">MongoDB</span></dd></div>
+        <div class="skills"><dt>Also</dt><dd><span class="chip">Git</span><span class="chip">Vercel / AWS</span><span class="chip">Jest</span><span class="chip">CI/CD</span></dd></div>
+      </dl>
+    </section>
+
+    <section id="about" class="about">
+      <h2>About me</h2>
+      <p>I'm a Full Stack Developer with 7+ years of experience building fast, scalable web applications using the MERN stack (MongoDB, Express.js, React, Node.js) and TypeScript.</p>
+      <p>I help startups and businesses turn ideas into working products, from MVPs to full-scale SaaS platforms, with clean code, clear communication, and on-time delivery.</p>
+      <p>What I can build for you:</p>
+      <ul>
+        <li>Custom web applications and dashboards</li>
+        <li>REST API development and third-party integrations</li>
+        <li>MVPs and SaaS products from scratch</li>
+        <li>Frontend development with React, Redux, and TypeScript</li>
+        <li>Backend systems with Node.js, Express.js, and MongoDB</li>
+        <li>Performance optimization, bug fixing, and code refactoring</li>
+      </ul>
+      <p><b>Tech stack:</b> React.js | TypeScript | JavaScript | Redux | Node.js | Express.js | MongoDB | HTML5 | CSS3</p>
+      <p>I'm currently open to freelance and contract projects. If you have a project in mind, message me here. I'm happy to discuss your idea.</p>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <h2>Tell me about your project</h2>
+        <p class="lead" style="margin-bottom:8px">Include three things: what you’re building, when you need it, and a rough budget.</p>
+        <a class="mail" href="mailto:shashankpanchal28@gmail.com?subject=Project%20enquiry">shashankpanchal28@gmail.com</a>
+        <div class="actions">
+          <a class="btn" href="mailto:shashankpanchal28@gmail.com?subject=Project%20enquiry">Send an email</a>
+          <a class="btn alt" href="https://www.linkedin.com/in/shashank-panchal-285b73263/">LinkedIn</a>
+          <a class="btn alt" href="https://github.com/shashankmpanchal">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 [Your Name]. Built with HTML and CSS.</div>
+</footer>
+</body>
+</html>
